@@ -1,0 +1,33 @@
+<!-- <form [formGroup]="pharmacyAddForm" (ngSubmit)="onSubmit()">
+  
+  <label>
+    Pharmacy Name:
+    <input type="text" formControlName="pharmacyName">
+  </label>
+
+  <label>
+    photo :
+    <input type="text" formControlName="photo">
+  </label>
+
+  <input type="submit" value="submit">
+
+</form> -->
+<div class="row">
+  <div class="col-lg-6">
+    <div class="p-5">
+<form class="user" [formGroup]="pharmacyAddForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Pharmacy Name:</label>
+    <input type="text"  formControlName="pharmacyName" class="form-control form-control-user"  placeholder="Pharmacy Name">
+  </div>
+  <div class="form-group">
+      <label>Photo :</label>
+    <input type="text"  formControlName="photo" class="form-control form-control-user"  placeholder="photo">
+  </div>
+  <input  class="btn btn-primary btn-user btn-block" type="submit" value="submit">
+
+</form>
+</div>
+</div>
+</div>

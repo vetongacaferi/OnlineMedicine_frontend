@@ -1,0 +1,20 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div formArrayName="items"
+    *ngFor="let item of form.controls['items'].controls; let i = index">
+    <div [formGroupName]="i">
+      <input type="hidden" formControlName='id'>
+      <div class="row">
+        <div class="col-2">
+          <span>{{pharmacyMedicineList[i].name}}</span>
+        </div>
+        <div class="col-1">
+          <input type="checkbox" class="form-control"  formControlName='isSelected'>
+        </div>
+        <div class="col-2" *ngIf="item.get('isSelected').value" >
+          <input type="text" class="form-control"  formControlName='Quantity' placeholder="Quantity">
+        </div>
+      </div>
+    </div>
+  </div>
+  <input  class="btn btn-primary btn-user btn-block" type="submit" value="submit">
+</form>
