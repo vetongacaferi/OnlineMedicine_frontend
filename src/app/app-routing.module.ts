@@ -12,6 +12,8 @@ import { PharmacyEditComponent } from './admin/pharmacy/pharmacy-edit/pharmacy-e
 import { MedicineAddeditComponent } from './admin/medicine/medicine-addedit/medicine-addedit.component';
 import { PharmacyMedicinesComponent } from './admin/pharmacy/pharmacy-medicines/pharmacy-medicines.component';
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './admin/Settings/profile/profile.component';
+import { ActivitylogComponent } from './admin/Settings/activitylog/activitylog.component';
 
 
 const appRoutes: Routes = [
@@ -34,6 +36,9 @@ const appRoutes: Routes = [
         { path: 'pharmacy/add', component: PharmacyAddComponent, canActivate: [AuthGuard], },
         { path: 'pharmacy/edit/:id', component: PharmacyEditComponent, canActivate: [AuthGuard], },
         { path: 'pharmacy/medicines/:id', component: PharmacyMedicinesComponent, canActivate: [AuthGuard], },
+        { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], },
+        { path: 'activitylog', component: ActivitylogComponent, canActivate: [AuthGuard], },
+
        ]
 
     },

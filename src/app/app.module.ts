@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule, FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,14 +20,15 @@ import { MedicineAddeditComponent } from './admin/medicine/medicine-addedit/medi
 import { PharmacyMedicinesComponent } from './admin/pharmacy/pharmacy-medicines/pharmacy-medicines.component';
 import { RegisterComponent } from './register/register.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-
-
+import { ProfileComponent } from './admin/Settings/profile/profile.component';
+import { ActivitylogComponent } from './admin/Settings/activitylog/activitylog.component';
 
 
 @NgModule({
    imports: [
       BrowserModule,
       ReactiveFormsModule,
+      FormsModule,
       HttpClientModule,
       LeafletModule.forRoot(),
       routing
@@ -45,7 +46,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
       PharmacyEditComponent,
       MedicineAddeditComponent,
       PharmacyMedicinesComponent,
-      RegisterComponent
+      RegisterComponent,
+      ProfileComponent,
+      ActivitylogComponent,
    ],
    providers: [
       

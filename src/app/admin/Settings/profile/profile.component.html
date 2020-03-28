@@ -1,0 +1,99 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Basic info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image"
+        aria-selected="false">Image</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="firstName1">First name</label>
+          <input type="text" class="form-control" formControlName="firstName" id="firstName1" placeholder="First name"
+            required>
+          <div
+            *ngIf="profileForm.get('firstName').invalid && (profileForm.get('firstName').dirty || profileForm.get('firstName').touched)"
+            class="alert alert-danger">
+            <div *ngIf="profileForm.get('firstName').errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="profileForm.get('firstName').errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="lastName1">Last name</label>
+          <input type="text" class="form-control" formControlName="lastName" id="lastName1" placeholder="Last name"
+            required>
+          <div
+            *ngIf="profileForm.get('lastName').invalid && (profileForm.get('lastName').dirty || profileForm.get('lastName').touched)"
+            class="alert alert-danger">
+            <div *ngIf="profileForm.get('lastName').errors.required">
+              Last name is required.
+            </div>
+            <div *ngIf="profileForm.get('lastName').errors.minlength">
+              Last name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationServerUsername">Username</label>
+          <input type="text" class="form-control" formControlName="userName" id="Username" placeholder="Username"
+            aria-describedby="inputGroupPrepend3" required>
+          <div
+            *ngIf="profileForm.get('userName').invalid && (profileForm.get('userName').dirty || profileForm.get('userName').touched)"
+            class="alert alert-danger">
+            <div *ngIf="profileForm.get('userName').errors.required">
+              Username is required.
+            </div>
+            <div *ngIf="profileForm.get('userName').errors.minlength">
+              Username must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="city">City</label>
+          <input type="text" class="form-control" formControlName="city" id="city" placeholder="City" required>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="state">State</label>
+          <input type="text" class="form-control" formControlName="state" id="state" placeholder="State" required>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" formControlName="zip" id="zip" placeholder="Zip" required>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input #file type="file" class="custom-file-input" id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01" (change)="handleFileInput($event.target.files)">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+      <div>
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <button type="submit" id="submit" class="btn btn-primary" >Save</button>
+    <a routerLink="/admin/dashboard" id="cancel" class="btn btn-default">Cancel</a>
+  </div>
+</form>
+<div>{{ profileForm.value | json}}</div>
