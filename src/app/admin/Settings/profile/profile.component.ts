@@ -1,5 +1,7 @@
+import { ProfileService } from './profile.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit,  } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,15 +11,20 @@ import { Component, OnInit,  } from '@angular/core';
 export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
+  profileData: any;
 
   imgURL: any;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private profileService: ProfileService,
+    private router: Router,
+    ) {
   
    }
 
   ngOnInit(): void {
     this.createProfileForm();
-
+    this.getProfileData();
   }
 
   createProfileForm(): FormGroup{
@@ -29,6 +36,16 @@ export class ProfileComponent implements OnInit {
       state:[''],
       zip:['']
     });
+  }
+
+
+  getProfileData(): void{
+    this.profileService.getProfile()
+    .subscribe( result =>{
+       console.log('result:', result);
+       this.profileData = result;
+       this.updateProfile(result);
+    })
   }
 
   handleFileInput(files: FileList) {
@@ -49,19 +66,42 @@ export class ProfileComponent implements OnInit {
   }}
 
 
-  updateProfile(): void {
+  updateProfile(result): void {
     this.profileForm.patchValue({
-      // firstName: 'Nancy',
-      // address: {
-      //   street: '123 Drew Street'
-      // }
+      firstName: result.firstname,
+      lastName: result.lastname,
+      userName: result.username,
+      city: result.city,
+      state: result.state,
+      zip: result.zipcode
     });
   }
 
 
   onSubmit(): void{
-    console.log(this.profileForm.value);
+    const formData = Object.assign({}, this.profileForm.value);
 
+    if(this.profileForm.valid)
+    {
+      this.profileService.updateProfile(formData).subscribe(data => {
+        console.log(data);
+        this.router.navigate(['/admin/dashboard']);
+      }); 
+    }
+    else
+    {
+      this.markFormGroupTouched(this.profileForm);
+    }
+   
+   }
+
+   private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 
 }
