@@ -70,8 +70,8 @@
           <input type="text" class="form-control" formControlName="state" id="state" placeholder="State" required>
         </div>
         <div class="col-md-3 mb-3">
-          <label for="zip">Zip</label>
-          <input type="text" class="form-control" formControlName="zip" id="zip" placeholder="Zip" required>
+          <label for="zipp">Zip</label>
+          <input type="text" class="form-control" formControlName="zip" id="zipp" placeholder="Zip" required>
         </div>
       </div>
     </div>
@@ -82,12 +82,17 @@
         </div>
         <div class="custom-file">
           <input #file type="file" class="custom-file-input" id="inputGroupFile01"
-            aria-describedby="inputGroupFileAddon01" (change)="handleFileInput($event.target.files)">
+            aria-describedby="inputGroupFileAddon01" (change)="handleFileInput($event)">
           <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
         </div>
       </div>
       <div>
-        <img [src]="imgURL" height="200" *ngIf="imgURL">
+        <div>
+          <img [src]="sanitizeImg(profileForm.get('file').value)" height="200">
+        </div>
+        <div *ngIf="profileForm.get('file').value">
+          <button type="button" class="btn btn-danger" (click)="removeImage()">Remove</button>
+        </div>
       </div>
     </div>
   </div>

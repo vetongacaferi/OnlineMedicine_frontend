@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ProfileComponent } from './admin/Settings/profile/profile.component';
 import { ActivitylogComponent } from './admin/Settings/activitylog/activitylog.component';
+import { SafeHtmlPipe } from './pipe/SafeHtml.pipe';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ActivitylogComponent } from './admin/Settings/activitylog/activitylog.c
       RegisterComponent,
       ProfileComponent,
       ActivitylogComponent,
+      SafeHtmlPipe,
    ],
    providers: [
       
