@@ -16,9 +16,16 @@ export class ProfileService {
 
    httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/json',
      })
     }
+
+    httpOptionsFile = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+       })
+      }
   
   constructor(
     private http: HttpClient,
@@ -37,7 +44,7 @@ export class ProfileService {
   updateProfile(values: any) :Observable<any>
   {
     values.id = this.authSerivce.currentUserValue.id;
-    return this.http.put<any>(`${environment.apiUrl}/Profile/UpdateProfile`, values, this.httpOptions).pipe(
+    return this.http.put<any>(`${environment.apiUrl}/Profile/UpdateProfile`, values, this.httpOptionsFile).pipe(
       tap(() => console.log("profile updated"),error =>console.log(error))       
       );
   }
