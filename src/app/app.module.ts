@@ -23,6 +23,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ProfileComponent } from './admin/Settings/profile/profile.component';
 import { ActivitylogComponent } from './admin/Settings/activitylog/activitylog.component';
 import { SafeHtmlPipe } from './pipe/SafeHtml.pipe';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SafeHtmlPipe } from './pipe/SafeHtml.pipe';
       FormsModule,
       HttpClientModule,
       LeafletModule.forRoot(),
-      routing
+      SharedModule,
+      routing,
    ],
    declarations: [
       AppComponent,
