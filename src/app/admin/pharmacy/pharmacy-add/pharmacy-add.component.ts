@@ -22,6 +22,9 @@ export class PharmacyAddComponent implements OnInit {
     this.pharmacyAddForm = this.fb.group({
       pharmacyName: [''],
       photo: [''],
+      Address: '',
+      Latitude: '',
+      Longtitude: ''
     });
 
   }
@@ -36,6 +39,15 @@ export class PharmacyAddComponent implements OnInit {
     this.pharmacy.addPharmacy(this.pharmacyAddForm.value).subscribe(data => {
       console.log(data);
       this.router.navigate(['/admin/pharmacy']);
+    });
+  }
+
+  receiveLocation($event) {
+    console.log('location: ', $event);
+
+    this.pharmacyAddForm.patchValue({
+      Latitude: $event.lat,
+      Longtitude:  $event.lng
     });
   }
 
