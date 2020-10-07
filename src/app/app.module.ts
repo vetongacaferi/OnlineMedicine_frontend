@@ -14,8 +14,7 @@ import { LeftNavbarMenuComponent } from './admin/left-navbar-menu/left-navbar-me
 import { MedicineComponent } from './admin/medicine/medicine-list/medicine.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PharmacyComponent } from './admin/pharmacy/pharmacy-list/pharmacy.component';
-import { PharmacyAddComponent } from './admin/pharmacy/pharmacy-add/pharmacy-add.component';
-import { PharmacyEditComponent } from './admin/pharmacy/pharmacy-edit/pharmacy-edit.component';
+import { PharmacyAddEditComponent } from './admin/pharmacy/pharmacy-addedit/pharmacy-addedit.component';
 import { MedicineAddeditComponent } from './admin/medicine/medicine-addedit/medicine-addedit.component';
 import { PharmacyMedicinesComponent } from './admin/pharmacy/pharmacy-medicines/pharmacy-medicines.component';
 import { RegisterComponent } from './register/register.component';
@@ -45,8 +44,7 @@ import { SharedModule } from './shared/shared.module';
       DashboardComponent,
       MedicineComponent,
       PharmacyComponent,
-      PharmacyAddComponent,
-      PharmacyEditComponent,
+      PharmacyAddEditComponent,
       MedicineAddeditComponent,
       PharmacyMedicinesComponent,
       RegisterComponent,

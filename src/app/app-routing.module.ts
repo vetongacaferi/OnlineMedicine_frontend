@@ -7,8 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { MedicineComponent } from './admin/medicine/medicine-list/medicine.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PharmacyComponent } from './admin/pharmacy/pharmacy-list/pharmacy.component';
-import { PharmacyAddComponent } from './admin/pharmacy/pharmacy-add/pharmacy-add.component';
-import { PharmacyEditComponent } from './admin/pharmacy/pharmacy-edit/pharmacy-edit.component';
+import { PharmacyAddEditComponent } from './admin/pharmacy/pharmacy-addedit/pharmacy-addedit.component';
 import { MedicineAddeditComponent } from './admin/medicine/medicine-addedit/medicine-addedit.component';
 import { PharmacyMedicinesComponent } from './admin/pharmacy/pharmacy-medicines/pharmacy-medicines.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,8 +32,7 @@ const appRoutes: Routes = [
         { path: 'medicine/add', component: MedicineAddeditComponent, canActivate: [AuthGuard],},        
         { path: 'medicine/edit/:id', component: MedicineAddeditComponent, canActivate: [AuthGuard],},        
         { path: 'pharmacy', component: PharmacyComponent, canActivate: [AuthGuard], },
-        { path: 'pharmacy/add', component: PharmacyAddComponent, canActivate: [AuthGuard], },
-        { path: 'pharmacy/edit/:id', component: PharmacyEditComponent, canActivate: [AuthGuard], },
+        { path: 'pharmacy/add/:id', component: PharmacyAddEditComponent, canActivate: [AuthGuard], },
         { path: 'pharmacy/medicines/:id', component: PharmacyMedicinesComponent, canActivate: [AuthGuard], },
         { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], },
         { path: 'activitylog', component: ActivitylogComponent, canActivate: [AuthGuard], },
